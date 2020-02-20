@@ -5,9 +5,17 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libompl-dev \
-    python-catkin-tools \
     libassimp-dev \
-    libtinyxml-dev
+    libtinyxml-dev \
+    ros-eloquent-rviz2 \
+    ros-eloquent-octomap \
+    clang \
+    clang-tidy \
+    libomp-dev \
+    libboost-all-dev \
+    libblas-dev \
+    liblapack-dev \
+    libjsoncpp-dev
 
 RUN git clone --branch master https://github.com/bulletphysics/bullet3.git
 RUN mkdir /bullet3_build && \
@@ -51,7 +59,7 @@ RUN mkdir /gtest_build && \
 RUN rm -rf /bullet3 /libccd /fcl /bullet3_build /libccd_build /fcl_build /swig-4.0.1 /googletest /gtest_build
 RUN rm swig-4.0.1.tar.gz
 
-RUN apt-get install --no-install-recommends -y ros-eloquent-rviz2 ros-eloquent-octomap clang clang-tidy libomp-dev
+# RUN apt-get install --no-install-recommends -y ros-eloquent-rviz2 ros-eloquent-octomap clang clang-tidy libomp-dev libboost-all-dev libblas-dev liblapack-dev libjsoncpp-dev
 RUN ln -s /usr/local/bin/swig /usr/local/bin/swig4.0
 RUN ln -s /usr/local/bin/ccache-swig /usr/local/bin/ccache-swig4.0
 
